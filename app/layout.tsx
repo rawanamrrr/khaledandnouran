@@ -18,34 +18,41 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://khaledandnouran.site"),
-  title: "Khaled & Nouran's Engagement",
-  description: "Join us to celebrate the engagement of Khaled and Nouran",
+  metadataBase: new URL("https://khaledandnouran.netlify.app/"),
+  title: "Khaled & Nouran's Wedding",
+  description: "Join us to celebrate the wedding of Khaled and Nouran",
   generator: "Digitiva",
   openGraph: {
-    url: "https://khaledandnouran.site/",
+    url: "https://khaledandnouran.netlify.app/",
     type: "website",
-    title: "Khaled & Nouran's Engagement",
-    description: "Join us to celebrate the engagement of Khaled and Nouran",
+    title: "Khaled & Nouran's Wedding",
+    description: "Join us to celebrate the wedding of Khaled and Nouran",
     images: [
       {
-        url: "https://khaledandnouran.site/invitation-design-arabic.jpg",
+        url: "https://khaledandnouran.netlify.app/invitation-design-arabic.jpg",
         width: 1200,
         height: 630,
-        alt: "Khaled & Nouran's Engagement Invitation",
+        alt: "Khaled & Nouran's Wedding Invitation",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Khaled & Nouran's Engagement",
-    description: "Join us to celebrate the engagement of Khaled and Nouran",
-    images: ["https://khaledandnouran.site/invitation-design-arabic.jpg"],
+    title: "Khaled & Nouran's Wedding",
+    description: "Join us to celebrate the wedding of Khaled and Nouran",
+    images: ["https://khaledandnouran.netlify.app/invitation-design-arabic.jpg"],
   },
   icons: {
     icon: "/invitation-design-arabic.jpg",
     apple: "/invitation-design-arabic.jpg",
   },
+  other: {
+    'theme-color': '#ffffff',
+    'mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'default',
+    'apple-mobile-web-app-title': "Khaled & Nouran's Wedding",
+  }
 }
 
 export default function RootLayout({
