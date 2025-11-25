@@ -64,24 +64,24 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* ✅ Open Graph tags for Facebook & WhatsApp previews */}
-                <meta property="og:url" content="https://khaledandnouran.site/" />
+                <meta property="og:url" content="ttps://khaledandnouran.netlify.app/" />
         <meta property="og:type" content="website" />
-                <meta property="og:title" content="Khaled & Nouran's Engagement" />
-                <meta property="og:description" content="Join us to celebrate the engagement of Khaled and Nouran" />
+                <meta property="og:title" content="Khaled & Nouran's Wedding" />
+                <meta property="og:description" content="Join us to celebrate the Wedding of Khaled and Nouran" />
                 <meta
           property="og:image"
-          content="https://khaledandnouran.site/invitation-design-arabic.jpg"
+          content="ttps://khaledandnouran.netlify.app/invitation-design-arabic.jpg"
         />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-                <meta property="og:image:alt" content="Khaled & Nouran's Engagement Invitation" />
+                <meta property="og:image:alt" content="Khaled & Nouran's Wedding Invitation" />
         {/* Removed invalid fb:app_id since it's not needed for basic sharing */}
 
         {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Khaled & Nouran's Engagement" />
-                <meta name="twitter:description" content="Join us to celebrate the engagement of Khaled and Nouran" />
-                <meta name="twitter:image" content="https://khaledandnouran.site/invitation-design-arabic.jpg" />
+                <meta name="twitter:title" content="Khaled & Nouran's Wedding" />
+                <meta name="twitter:description" content="Join us to celebrate the Wedding of Khaled and Nouran" />
+                <meta name="twitter:image" content="ttps://khaledandnouran.netlify.app/invitation-design-arabic.jpg" />
 
         {/* Preload critical images for immediate loading */}
         <link
