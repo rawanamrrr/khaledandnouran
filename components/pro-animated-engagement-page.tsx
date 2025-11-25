@@ -12,6 +12,7 @@ import { useLanguage } from "@/contexts/LanguageContext"
 import { Button } from "@/components/ui/button"
 import PhotoUploadSection from "@/components/photo-upload-section"
 import ArabicPoem from "@/components/arabic-poem"
+import RsvpSection from "@/components/rsvp-section"
 
 // Format date in Arabic or English
 const formatDate = (date: Date, locale: string) => {
@@ -650,6 +651,9 @@ export default function ProAnimatedWeddingPage({ onImageLoad, playGifTrigger }: 
 
       {/* Message Section */}
       <HandwrittenMessage />
+
+      {/* RSVP Section */}
+      <RsvpSection />
 
       {/* Photo Upload Section */}
       <PhotoUploadSection />

@@ -58,7 +58,18 @@ type TranslationKey =
   | 'uploadButton'
   | 'scanQRCode'
   | 'orUploadDirectly'
-  | 'aMessageToNouran';
+  | 'aMessageToNouran'
+  | 'rsvpSubtitle'
+  | 'attendanceLabel'
+  | 'attending'
+  | 'notAttending'
+  | 'fullNamePlaceholder'
+  | 'submitRsvp'
+  | 'fullNameLabel'
+  | 'guestCountLabel'
+  | 'guestNamesLabel'
+  | 'guestNamesPlaceholder'
+  | 'sorryToMissYou';
 
 type Translations = {
   [key in TranslationKey]: {
@@ -208,7 +219,7 @@ export const translations: Translations = {
     en: 'Please enter your name and write a message',
     ar: 'الرجاء إدخال الاسم وكتابة رسالة',
   },
-    footerMessage: {
+  footerMessage: {
     en: "We can't wait to celebrate with you",
     ar: 'يسعدنا دعوتكم لحضور حفل خطبة خالد و نوران',
   },
@@ -299,6 +310,50 @@ export const translations: Translations = {
   aMessageToNouran: {
     en: 'A Message To Nouran',
     ar: 'رسالة إلى نوران',
+  },
+  rsvpSubtitle: {
+    en: 'Let us know if you can make it',
+    ar: 'أخبرنا ما إذا كنت تستطيع الحضور',
+  },
+  attendanceLabel: {
+    en: 'Will you be attending?',
+    ar: 'هل ستحضر؟',
+  },
+  attending: {
+    en: 'Attending',
+    ar: 'سأحضر',
+  },
+  notAttending: {
+    en: 'Not Attending',
+    ar: 'لن أحضر',
+  },
+  fullNamePlaceholder: {
+    en: 'Enter your full name',
+    ar: 'أدخل اسمك الكامل',
+  },
+  submitRsvp: {
+    en: 'Submit RSVP',
+    ar: 'إرسال تأكيد الحضور',
+  },
+  fullNameLabel: {
+    en: 'Full Name',
+    ar: 'الاسم الكامل',
+  },
+  guestCountLabel: {
+    en: 'Number of Guests',
+    ar: 'عدد الضيوف',
+  },
+  guestNamesLabel: {
+    en: 'Names of Guests',
+    ar: 'أسماء الضيوف',
+  },
+  guestNamesPlaceholder: {
+    en: 'Enter the names of your guests',
+    ar: 'أدخل أسماء ضيوفك',
+  },
+  sorryToMissYou: {
+    en: 'We are sorry you cannot make it. You will be missed!',
+    ar: 'نأسف لعدم تمكنك من الحضور. سنفتقدك!',
   },
 };
 
