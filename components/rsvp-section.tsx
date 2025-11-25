@@ -45,7 +45,7 @@ const staggerContainer = {
 
 export default function RsvpSection() {
   const t = useTranslation()
-  const [attendance, setAttendance] = useState("attending")
+  const [attendance, setAttendance] = useState("")
     const [name, setName] = useState("")
   const [guestCount, setGuestCount] = useState(1);
   const [guestNames, setGuestNames] = useState("")
@@ -124,73 +124,81 @@ export default function RsvpSection() {
           />
           
           <div className="relative z-10">
-            <form onSubmit={handleSubmit} className="space-y-8">
+                                                <form onSubmit={handleSubmit} className="space-y-8">
               <div className="space-y-4 text-center">
-                <Label className="text-xl font-medium text-foreground tracking-wide">{t('attendanceLabel')}</Label>
-                <RadioGroup defaultValue="attending" value={attendance} onValueChange={setAttendance} className="flex justify-center gap-x-4 sm:gap-x-8 pt-2">
-                  <div className="flex items-center space-x-3">
-                    <RadioGroupItem value="attending" id="attending" className="w-5 h-5" />
-                    <Label htmlFor="attending" className="text-lg font-light cursor-pointer">{t('attending')}</Label>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <RadioGroupItem value="not_attending" id="not_attending" className="w-5 h-5" />
-                    <Label htmlFor="not_attending" className="text-lg font-light cursor-pointer">{t('notAttending')}</Label>
-                  </div>
+                <Label className="text-xl font-elegant text-foreground tracking-wider">{t('attendanceLabel')}</Label>
+                <RadioGroup value={attendance} onValueChange={setAttendance} className="grid grid-cols-2 gap-4 pt-2">
+                                    <Label htmlFor="attending" className={`flex flex-col items-center justify-center p-6 rounded-2xl border-2 cursor-pointer transition-all duration-300 ${attendance === 'attending' ? 'bg-accent/10 border-accent shadow-inner' : 'bg-background/50 border-accent/20 hover:border-accent hover:bg-accent/5'}`}>
+                    <RadioGroupItem value="attending" id="attending" className="sr-only" />
+                    <span className="text-lg font-medium">{t('attending')}</span>
+                  </Label>
+                                    <Label htmlFor="not_attending" className={`flex flex-col items-center justify-center p-6 rounded-2xl border-2 cursor-pointer transition-all duration-300 ${attendance === 'not_attending' ? 'bg-accent/10 border-accent shadow-inner' : 'bg-background/50 border-accent/20 hover:border-accent hover:bg-accent/5'}`}>
+                    <RadioGroupItem value="not_attending" id="not_attending" className="sr-only" />
+                    <span className="text-lg font-medium">{t('notAttending')}</span>
+                  </Label>
                 </RadioGroup>
               </div>
 
-                            <div className="space-y-2">
-                <Label htmlFor="name" className="text-lg font-medium text-foreground">{t('fullNameLabel')}</Label>
-                <Input id="name" placeholder={t('fullNamePlaceholder')} value={name} onChange={(e) => setName(e.target.value)} required className="bg-background/50" />
-              </div>
-
-              <motion.div
-                animate={attendance === 'not_attending' ? 'visible' : 'hidden'}
+                            <motion.div
+                animate={attendance ? 'visible' : 'hidden'}
                 initial="hidden"
                 variants={{
-                  visible: { opacity: 1, y: 0, height: 'auto', transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
-                  hidden: { opacity: 0, y: -20, height: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
-                }}
-                className="overflow-hidden text-center"
-              >
-                <p className="text-muted-foreground italic pt-4">{t('sorryToMissYou')}</p>
-              </motion.div>
-
-              <motion.div
-                animate={attendance === 'attending' ? 'visible' : 'hidden'}
-                initial="hidden"
-                variants={{
-                  visible: { opacity: 1, y: 0, height: 'auto', transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
-                  hidden: { opacity: 0, y: -20, height: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
+                  visible: { opacity: 1, height: 'auto', transition: { staggerChildren: 0.2, delayChildren: 0.1, duration: 0.4, ease: 'easeOut' } },
+                  hidden: { opacity: 0, height: 0, transition: { duration: 0.4, ease: 'easeIn' } }
                 }}
                 className="overflow-hidden"
               >
                 <div className="space-y-8 pt-8 border-t border-accent/20">
-                  <div className="space-y-4">
-                    <Label className="text-lg font-medium text-foreground">{t('guestCountLabel')}</Label>
-                    <div className="flex items-center gap-4">
-                      <Button type="button" variant="outline" size="icon" onClick={() => setGuestCount(Math.max(1, guestCount - 1))} className="rounded-full">
-                        <Minus className="h-4 w-4" />
-                      </Button>
-                      <span className="text-xl font-semibold text-foreground w-12 text-center">{guestCount}</span>
-                      <Button type="button" variant="outline" size="icon" onClick={() => setGuestCount(guestCount + 1)} className="rounded-full">
-                        <Plus className="h-4 w-4" />
-                      </Button>
+                  <motion.div variants={slideUp} className="space-y-2 text-left">
+                    <Label htmlFor="name" className="text-lg font-medium text-foreground">{t('fullNameLabel')}</Label>
+                    <Input id="name" placeholder={t('fullNamePlaceholder')} value={name} onChange={(e) => setName(e.target.value)} required className="bg-background/50 text-lg p-6 rounded-xl" />
+                  </motion.div>
+
+                  <motion.div
+                    animate={attendance === 'not_attending' ? 'visible' : 'hidden'}
+                    initial="hidden"
+                    variants={{ visible: { opacity: 1, height: 'auto' }, hidden: { opacity: 0, height: 0 } }}
+                    transition={{ duration: 0.4, ease: 'easeOut' }}
+                    className="overflow-hidden text-center"
+                  >
+                    <p className="text-muted-foreground italic text-lg py-4">{t('sorryToMissYou')}</p>
+                  </motion.div>
+
+                  <motion.div
+                    animate={attendance === 'attending' ? 'visible' : 'hidden'}
+                    initial="hidden"
+                    variants={{ visible: { opacity: 1, height: 'auto' }, hidden: { opacity: 0, height: 0 } }}
+                    transition={{ duration: 0.4, ease: 'easeOut' }}
+                    className="overflow-hidden"
+                  >
+                    <div className="space-y-8">
+                      <motion.div variants={slideUp} className="space-y-4 text-left">
+                        <Label className="text-lg font-medium text-foreground">{t('guestCountLabel')}</Label>
+                        <div className="flex items-center gap-4">
+                          <Button type="button" variant="outline" size="icon" onClick={() => setGuestCount(Math.max(1, guestCount - 1))} className="rounded-full w-12 h-12 bg-background/50 hover:bg-accent/10 border-accent/30">
+                            <Minus className="h-5 w-5" />
+                          </Button>
+                          <span className="text-2xl font-semibold text-foreground w-16 text-center">{guestCount}</span>
+                          <Button type="button" variant="outline" size="icon" onClick={() => setGuestCount(guestCount + 1)} className="rounded-full w-12 h-12 bg-background/50 hover:bg-accent/10 border-accent/30">
+                            <Plus className="h-5 w-5" />
+                          </Button>
+                        </div>
+                      </motion.div>
+                      <motion.div variants={slideUp} className="space-y-2 text-left">
+                        <Label htmlFor="guest_names" className="text-lg font-medium text-foreground">{t('guestNamesLabel')}</Label>
+                        <Textarea id="guest_names" placeholder={t('guestNamesPlaceholder')} value={guestNames} onChange={(e) => setGuestNames(e.target.value)} className="bg-background/50 text-lg p-4 min-h-[120px] rounded-xl" />
+                      </motion.div>
                     </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="guest_names" className="text-lg font-medium text-foreground">{t('guestNamesLabel')}</Label>
-                    <Textarea id="guest_names" placeholder={t('guestNamesPlaceholder')} value={guestNames} onChange={(e) => setGuestNames(e.target.value)} className="bg-background/50" />
-                  </div>
+                  </motion.div>
+
+                  <motion.div variants={slideUp} className="text-center pt-6">
+                    <Button type="submit" size="lg" className="w-full md:w-auto font-bold tracking-wider text-lg px-12 py-7 rounded-full shadow-lg bg-accent text-accent-foreground hover:bg-accent/90 transition-all duration-300 transform hover:scale-105">
+                      {t('submitRsvp')}
+                    </Button>
+                    {status && <p className="mt-6 text-center text-lg text-accent font-medium">{status}</p>}
+                  </motion.div>
                 </div>
               </motion.div>
-
-              <div className="text-center pt-6">
-                <Button type="submit" size="lg" className="w-full md:w-auto font-bold tracking-wider text-lg px-12 py-7 rounded-full shadow-lg hover:shadow-accent/30 transition-shadow duration-300">
-                  {t('submitRsvp')}
-                </Button>
-                {status && <p className="mt-6 text-center text-lg text-accent font-medium">{status}</p>}
-              </div>
             </form>
           </div>
         </motion.div>
